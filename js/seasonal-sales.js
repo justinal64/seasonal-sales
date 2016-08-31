@@ -4,7 +4,7 @@ var discountSelect = document.getElementById("discount");
 
 document.getElementById("discount").addEventListener("change", function() {
     var discountValue = this.value;
-    // Selects the text IE. Winter
+    // Selects the text IE. "Winter"
     var discountSeason = this.options[this.selectedIndex].text;
     if(discountSeason === "Winter") {
       discountSeason = 1;
@@ -16,6 +16,7 @@ document.getElementById("discount").addEventListener("change", function() {
     applyDiscount(discountValue, discountSeason);
 })
 
+// Create the <select>
 function catArray() {
     categories = JSON.parse(this.responseText);
     var discount = "<option value=''></value>";
@@ -25,6 +26,7 @@ function catArray() {
     discountSelect.innerHTML += discount;
 }
 
+// Apply the discount when an <option> is selected
 function applyDiscount(discount, season) {
     // loop over array and apply the discount
     for(var i = 0; i < products.products.length; i++) {
@@ -52,7 +54,7 @@ function displayArray() {
 
     for (var i = 0; i < products.products.length; i++) {
         currentProduct = products["products"][i];
-        // console.log("currentProduct price = ", currentProduct.price);
+
         product += "<div class='products'>";
         product += `<p>${currentProduct.name} ${currentProduct.price}`;
         // Better solution?????
@@ -69,13 +71,13 @@ function displayArray() {
 }
 
 var productsRequest = new XMLHttpRequest();
-productsRequest.addEventListener("load", onLoad); //Callback
+productsRequest.addEventListener("load", onLoad);
 productsRequest.addEventListener("error", onError)
 productsRequest.open("GET", "products.json")
 productsRequest.send();
 
 var categoriesRequest = new XMLHttpRequest();
-categoriesRequest.addEventListener("load", catArray); //Callback
+categoriesRequest.addEventListener("load", catArray);
 categoriesRequest.addEventListener("error", onError)
 categoriesRequest.open("GET", "categories.json")
 categoriesRequest.send();
