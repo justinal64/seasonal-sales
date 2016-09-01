@@ -6,12 +6,12 @@ document.getElementById("discount").addEventListener("change", function() {
     var discountValue = this.value;
     // Selects the text IE. "Winter"
     var discountSeason = this.options[this.selectedIndex].text;
-    if(discountSeason === "Winter") {
-      discountSeason = 1;
-    } else if(discountSeason === "Autumn") {
-      discountSeason = 2;
+    if(discountSeason === categories.categories[0].season_discount) {
+      discountSeason = categories.categories[0].id;
+    } else if(discountSeason === categories.categories[1].season_discount) {
+      discountSeason = categories.categories[1].id;
     } else {
-      discountSeason = 3;
+      discountSeason = categories.categories[2].id;
     }
     applyDiscount(discountValue, discountSeason);
 })
@@ -54,9 +54,9 @@ function displayArray() {
 
     for (var i = 0; i < products.products.length; i++) {
         currentProduct = products["products"][i];
-
         product += "<div class='products'>";
         product += `<p>${currentProduct.name} ${currentProduct.price}`;
+
         // Better solution?????
         if(currentProduct.category_id === 1) {
             product += " Winter</p>";
