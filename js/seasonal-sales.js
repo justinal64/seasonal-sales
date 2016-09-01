@@ -57,7 +57,6 @@ function displayArray() {
         product += "<div class='products'>";
         product += `<p>${currentProduct.name} ${currentProduct.price}`;
 
-        // Better solution?????
         if(currentProduct.category_id === 1) {
             product += " Winter</p>";
         } else if (currentProduct.category_id === 2) {
